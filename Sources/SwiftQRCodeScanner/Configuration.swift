@@ -29,7 +29,8 @@ public struct QRScannerConfiguration {
     public var cancelButtonTitle: String
     public var cancelButtonTintColor: UIColor?
     public var hideNavigationBar: Bool
-    
+    public var stopAndDismissAfterScan: Bool
+
     // MARK: - Initializers
     
     public init(title: String = "Scan QR Code",
@@ -47,7 +48,8 @@ public struct QRScannerConfiguration {
                 readQRFromPhotos: Bool = true,
                 cancelButtonTitle: String = "Cancel",
                 cancelButtonTintColor: UIColor? = nil,
-                hideNavigationBar: Bool = false) {
+                hideNavigationBar: Bool = false,
+                stopAndDismissAfterScan: Bool = true) {
         self.title = title
         self.hint = hint
         self.uploadFromPhotosTitle = uploadFromPhotosTitle
@@ -64,6 +66,7 @@ public struct QRScannerConfiguration {
         self.cancelButtonTitle = cancelButtonTitle
         self.cancelButtonTintColor = cancelButtonTintColor
         self.hideNavigationBar = hideNavigationBar
+        self.stopAndDismissAfterScan = stopAndDismissAfterScan
     }
 }
 

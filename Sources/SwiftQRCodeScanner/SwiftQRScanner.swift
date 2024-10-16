@@ -350,13 +350,20 @@ public class QRCodeScannerController: UIViewController,
      
      - Important: This function does nothing if the capture session is already running.
      */
-    private func startScanningQRCode() {
+    public func startScanningQRCode() {
         if captureSession.isRunning { return }
         DispatchQueue.global(qos: .background).async {
             self.captureSession.startRunning()
         }
     }
-    
+
+    public func stopScanningQRCode() {
+        if captureSession.isRunning { return }
+        DispatchQueue.global(qos: .background).async {
+            self.captureSession.stopRunning()
+        }
+    }
+
     /**
      Sets up the capture session with a specified camera position (front or back).
      
@@ -436,8 +443,10 @@ extension QRCodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     } else {
                         delegate?.qrScanner(self, didFailWithError: .emptyResult)
                     }
-                    captureSession.stopRunning()
-                    self.dismiss(animated: true, completion: nil)
+                    if qrScannerConfiguration.stopAndDismissAfterScan {
+                        captureSession.stopRunning()
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
         }
