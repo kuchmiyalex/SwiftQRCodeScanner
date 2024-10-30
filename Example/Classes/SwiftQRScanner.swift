@@ -143,7 +143,7 @@ public class QRCodeScannerController: UIViewController, AVCaptureMetadataOutputO
     
     func prepareQRScannerView(_ view: UIView) {
         setupCaptureSession(devicePosition) //Default device capture position is rear
-        addViedoPreviewLayer(view)
+        addVideoPreviewLayer(view)
         createCornerFrame()
         addButtons(view)
     }
@@ -333,7 +333,7 @@ public class QRCodeScannerController: UIViewController, AVCaptureMetadataOutputO
     }
     
     ///Inserts layer to view
-    private func addViedoPreviewLayer(_ view: UIView) {
+    private func addVideoPreviewLayer(_ view: UIView) {
         videoPreviewLayer.frame = CGRect(x:view.bounds.origin.x, y: view.bounds.origin.y, width: view.bounds.size.width, height: view.bounds.size.height - bottomSpace)
         view.layer.insertSublayer(videoPreviewLayer, at: 0)
     }

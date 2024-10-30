@@ -192,7 +192,7 @@ public class QRCodeScannerController: UIViewController,
      */
     private func prepareQRScannerView() {
         setupCaptureSession(devicePosition) // Default device capture position is rear
-        addViedoPreviewLayer()
+        addVideoPreviewLayer()
         addRoundCornerFrame()
     }
     
@@ -358,7 +358,7 @@ public class QRCodeScannerController: UIViewController,
     }
 
     public func stopScanningQRCode() {
-        if captureSession.isRunning { return }
+        if !captureSession.isRunning { return }
         DispatchQueue.global(qos: .background).async {
             self.captureSession.stopRunning()
         }
@@ -410,7 +410,7 @@ public class QRCodeScannerController: UIViewController,
     /**
      Adds the video preview layer to the view with a mask to restrict the scanning area (optional).
      */
-    private func addViedoPreviewLayer() {
+    private func addVideoPreviewLayer() {
         videoPreviewLayer.frame = view.bounds
         view.layer.insertSublayer(videoPreviewLayer, at: 0)
         addMaskToVideoPreviewLayer()
