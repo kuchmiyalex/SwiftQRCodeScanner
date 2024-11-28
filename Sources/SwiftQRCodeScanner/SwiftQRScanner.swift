@@ -169,7 +169,7 @@ public class QRCodeScannerController: UIViewController,
     }
     
     private func addCloseButton() {
-        let closeButton = CloseButton(frame: CGRect(x: 16, y: 16, width: 20, height: 20))
+        let closeButton = CloseButton(frame: CGRect(x: 32, y: 32, width: 20, height: 20))
         closeButton.addTarget(self,
                               action: #selector(dismissViewController),
                               for: .touchUpInside)
@@ -268,8 +268,8 @@ public class QRCodeScannerController: UIViewController,
     private func addButtons() {
         // Torch Button
         if let flashOffImage = qrScannerConfiguration.flashOnImage {
-            let flashButton = RoundButton(frame: CGRect(x: 32,
-                                                        y: view.frame.height - 100,
+            let flashButton = RoundButton(frame: CGRect(x: view.frame.width - 32,
+                                                        y: 32,
                                                         width: roundButtonWidth,
                                                         height: roundButtonHeight))
             flashButton.addTarget(self, action: #selector(toggleTorch), for: .touchUpInside)
