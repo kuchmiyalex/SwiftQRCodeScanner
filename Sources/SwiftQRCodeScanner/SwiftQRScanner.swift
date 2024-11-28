@@ -268,8 +268,8 @@ public class QRCodeScannerController: UIViewController,
     private func addButtons() {
         // Torch Button
         if let flashOffImage = qrScannerConfiguration.flashOnImage {
-            let flashButton = RoundButton(frame: CGRect(x: view.frame.width - 32,
-                                                        y: 32,
+            let flashButton = RoundButton(frame: CGRect(x: view.frame.width - 32 - roundButtonWidth + 15,
+                                                        y: 32 - 15,
                                                         width: roundButtonWidth,
                                                         height: roundButtonHeight))
             flashButton.addTarget(self, action: #selector(toggleTorch), for: .touchUpInside)
