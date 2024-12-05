@@ -267,13 +267,16 @@ public class QRCodeScannerController: UIViewController,
      */
     private func addButtons() {
         // Torch Button
-        if let flashOffImage = qrScannerConfiguration.flashOnImage {
+        if let flashOnImage = qrScannerConfiguration.flashOnImage {
             let flashButton = RoundButton(frame: CGRect(x: view.frame.width - 32 - roundButtonWidth + 15,
                                                         y: 32 - 15,
                                                         width: roundButtonWidth,
                                                         height: roundButtonHeight))
             flashButton.addTarget(self, action: #selector(toggleTorch), for: .touchUpInside)
-            flashButton.setImage(flashOffImage, for: .normal)
+            flashButton.setImage(flashOnImage, for: .normal)
+            if let flashOffImage = qrScannerConfiguration.flashOffImage {
+                flashButton.setImage(flashOffImage, for: .selected)
+            }
             view.addSubview(flashButton)
             self.flashButton = flashButton
         }
@@ -306,6 +309,7 @@ public class QRCodeScannerController: UIViewController,
                 defaultDevice.torchMode = defaultDevice.torchMode == .on ? .off : .on
                 flashButton?.backgroundColor = defaultDevice.torchMode == .on ?
                 UIColor.white.withAlphaComponent(0.3) : UIColor.black.withAlphaComponent(0.5)
+                flashButton?.isSelected = defaultDevice.torchMode == .on
                 defaultDevice.unlockForConfiguration()
             } catch let error as NSError {
                 printLog("Torch Error: \(error)")

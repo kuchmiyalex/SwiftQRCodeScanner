@@ -20,6 +20,7 @@ public struct QRScannerConfiguration {
     public var uploadFromPhotosTitle: String
     public var cameraImage: UIImage?
     public var flashOnImage: UIImage?
+    public var flashOffImage: UIImage?
     public var galleryImage: UIImage?
     public var length: CGFloat
     public var color: UIColor
@@ -40,6 +41,7 @@ public struct QRScannerConfiguration {
                 invalidQRCodeAlertActionTitle: String = "OK",
                 cameraImage: UIImage? = nil,
                 flashOnImage: UIImage? = nil,
+                flashOffImage: UIImage? = nil,
                 galleryImage: UIImage? = nil,
                 length: CGFloat = 20.0,
                 color: UIColor = .green,
