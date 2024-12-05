@@ -59,6 +59,7 @@ public struct QRScannerConfiguration {
         self.invalidQRCodeAlertActionTitle = invalidQRCodeAlertActionTitle
         self.cameraImage = cameraImage
         self.flashOnImage = flashOnImage
+        self.flashOffImage = flashOffImage
         self.galleryImage = galleryImage
         self.length = length
         self.color = color
